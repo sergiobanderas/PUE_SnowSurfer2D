@@ -24,8 +24,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Read the value of the Move action and store it in moveValue
-        moveValue = moveAction.ReadValue<Vector2>();
-        Debug.Log("Move Value: " + moveValue);
+        moveValue = moveAction.ReadValue<Vector2>();        
 
         if (moveValue.x > 0)
         {
