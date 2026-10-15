@@ -55,11 +55,11 @@ public class PlayerController : MonoBehaviour
 
         if (moveValue.x > 0)
         {
-            rb.AddTorque(-5f); // Apply torque to rotate the player clockwise
+            rb.AddTorque(-2.5f); // Apply torque to rotate the player clockwise
         }
         else if (moveValue.x < 0)
         {
-            rb.AddTorque(5f); // Apply torque to rotate the player counterclockwise
+            rb.AddTorque(2.5f); // Apply torque to rotate the player counterclockwise
         }
     }
 }
