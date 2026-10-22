@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
         CalculateFlips();
     }
 
+/// <summary>
+/// Calculates the number of flips the player has performed based on their rotation and updates the score accordingly.
+/// </summary>
     private void CalculateFlips()
     {
         float currentRotation = transform.rotation.eulerAngles.z; 
