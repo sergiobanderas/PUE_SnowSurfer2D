@@ -4,10 +4,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
     [SerializeField] private float boostMultiplier = 30f; // Multiplier for the boost speed
     [SerializeField] private float baseSpeed = 15f; 
-    [SerializeField] private ScoreManager scoreManager; 
+    [SerializeField] private ScoreManager scoreManager;   
+    [SerializeField] private GameObject pauseMenuPanel;  
+    
 
     Rigidbody2D rb;
     SurfaceEffector2D surfaceEffector2D;
@@ -20,10 +21,16 @@ public class PlayerController : MonoBehaviour
 
     float maxTorque = 500f;
 
+    private bool isPaused = false; 
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //Active the selected character sprite 
+        int selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter", 0);
+        transform.GetChild(0).GetChild(selectedCharacter).gameObject.SetActive(true);
+
         // Get the Move action from the Input System
         moveAction = InputSystem.actions.FindAction("Move");
     
@@ -36,14 +43,30 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if the Escape key is pressed
+        if (Keyboard.current != null && 
+        Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            ToogglePause();            
+        }
+
         RotatePlayer();
         BoostPlayer();
         CalculateFlips();
     }
 
-/// <summary>
-/// Calculates the number of flips the player has performed based on their rotation and updates the score accordingly.
-/// </summary>
+    private void ToogglePause()
+    {
+        isPaused = !isPaused; 
+
+        pauseMenuPanel.SetActive(isPaused); 
+
+        Time.timeScale = isPaused ? 0f : 1f;        
+    }
+
+    /// <summary>
+    /// Calculates the number of flips the player has performed based on their rotation and updates the score accordingly.
+    /// </summary>
     private void CalculateFlips()
     {
         float currentRotation = transform.rotation.eulerAngles.z; 

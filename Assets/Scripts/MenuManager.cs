@@ -18,6 +18,9 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Credits");        
     }
 
+    /// <summary>
+    /// Loads the characters scene.
+    /// </summary>  
     public void GoToCharacters()
     {
         SceneManager.LoadScene("Characters");
@@ -26,6 +29,13 @@ public class MenuManager : MonoBehaviour
     public void GoToMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    
+    public void SelectCharacter(int characterIndex)
+    {        
+        PlayerPrefs.SetInt("SelectedCharacter", characterIndex);
+        GoToMenu();
     }
 
 }
