@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float baseSpeed = 15f; 
     [SerializeField] private ScoreManager scoreManager;   
     [SerializeField] private GameObject pauseMenuPanel;  
-    
 
+    
     Rigidbody2D rb;
     SurfaceEffector2D surfaceEffector2D;
 
@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Time.timeScale = 1f; 
+
         //Active the selected character sprite 
         int selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter", 0);
         transform.GetChild(0).GetChild(selectedCharacter).gameObject.SetActive(true);

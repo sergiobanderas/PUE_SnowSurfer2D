@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 913183969}
   - component: {fileID: 913183968}
   m_Layer: 5
-  m_Name: DinoButton
+  m_Name: PinkManButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3809319501612307451, guid: 27e5b3cd9571ba041bacdcb8cb1e1b6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: edbf2f282f3feb940b6238d4d339ada4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -502,7 +502,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -192, y: 8}
+  m_AnchoredPosition: {x: -150, y: 14}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &933068671
@@ -523,7 +523,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 70
+  m_Spacing: 5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -814,7 +814,7 @@ GameObject:
   - component: {fileID: 1372286313}
   - component: {fileID: 1372286312}
   m_Layer: 5
-  m_Name: FrogButton
+  m_Name: NinjaFrogButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -915,7 +915,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 9213168081529808920, guid: 3f521099e188142498dd04a07db068e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4872bd1108769a946a6acb68dc156fcf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
