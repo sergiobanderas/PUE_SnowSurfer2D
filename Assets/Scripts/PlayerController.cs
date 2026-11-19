@@ -7,13 +7,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float boostMultiplier = 30f; // Multiplier for the boost speed
     [SerializeField] private float baseSpeed = 15f; 
     [SerializeField] private ScoreManager scoreManager;   
-    [SerializeField] private GameObject pauseMenuPanel;  
+    [SerializeField] private GameObject pauseMenuPanel;
+    [SerializeField] private float jumpForce = 5f; 
+    
 
     
     Rigidbody2D rb;
     SurfaceEffector2D surfaceEffector2D;
 
     InputAction moveAction;
+    InputAction jumpAction;
+    bool isGrounded; 
     Vector2 moveValue ; 
     int flipCount;
     float totalRotation;
@@ -35,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
         // Get the Move action from the Input System
         moveAction = InputSystem.actions.FindAction("Move");
+        
+        jumpAction = InputSystem.actions.FindAction("Jump");
     
         // Get the Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
@@ -55,6 +61,37 @@ public class PlayerController : MonoBehaviour
         RotatePlayer();
         BoostPlayer();
         CalculateFlips();
+        Jump();
+    }
+
+    void Jump()
+    {
+        if (isPaused || !isGrounded) return; 
+
+        bool jumpPressed = jumpAction != null ? jumpAction.WasPressedThisFrame() : Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame;
+        
+        if (jumpPressed)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isGrounded = false;
+        }
+
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            isGrounded = false;
+        }
     }
 
     private void ToogglePause()
