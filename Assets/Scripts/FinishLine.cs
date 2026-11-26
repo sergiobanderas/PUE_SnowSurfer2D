@@ -29,10 +29,20 @@ public class FinishLine : MonoBehaviour
             audioSource.PlayOneShot(finishSound);
 
             //Reload Scene after 1.5 second
-            Invoke(nameof(ReloadScene), 1.5f); 
+            Invoke(nameof(NextLevel), 1.5f); 
 
         }
     }
+
+    /// <summary>
+    /// Loads the next scene in the build settings.
+    /// </summary>
+    void NextLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
 
     /// <summary>
     /// Reloads the current scene after a delay.
